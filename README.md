@@ -27,6 +27,7 @@ claude
 | Command | Description |
 |---------|-------------|
 | `/today` | Generate daily plan from Asana tasks + Google Calendar |
+| `/plan-tomorrow` | Auto-schedule tomorrow: creates calendar events + Notion workspaces |
 | `/doc-to-notion` | Document Claude Code session to Notion |
 | `/ship` | Smart git commit with conventional format |
 | `/deepwork` | Activate autonomous deep work mode |
@@ -37,7 +38,29 @@ claude
 |---------|-------------|
 | `deepwork` | Launch Claude in autonomous mode |
 | `deepwork "task"` | Run single task autonomously |
+| `plan-tomorrow` | Run tomorrow planning (creates calendar events) |
 | `claude-toolkit` | Navigate to toolkit directory |
+
+### Automation
+
+| Schedule | Action |
+|----------|--------|
+| Daily 20:00 | `/plan-tomorrow` runs automatically via launchd |
+
+Manage automation:
+```bash
+# View status
+launchctl list | grep phdnetworks
+
+# Manual run
+launchctl start com.phdnetworks.plan-tomorrow
+
+# Disable
+launchctl unload ~/Library/LaunchAgents/com.phdnetworks.plan-tomorrow.plist
+
+# Re-enable
+launchctl load ~/Library/LaunchAgents/com.phdnetworks.plan-tomorrow.plist
+```
 
 ## Installation
 
@@ -98,11 +121,15 @@ claude-toolkit/
 ├── uninstall.sh           # Clean removal
 ├── commands/              # Slash commands
 │   ├── today.md
+│   ├── plan-tomorrow.md   # Automated tomorrow planning
 │   ├── doc-to-notion.md
 │   ├── ship.md
 │   └── deepwork.md
 ├── scripts/               # Shell scripts
-│   └── deepwork.sh
+│   ├── deepwork.sh
+│   ├── plan-tomorrow.sh   # Tomorrow planning wrapper
+│   └── com.phdnetworks.plan-tomorrow.plist  # launchd automation
+├── logs/                  # Automation logs (gitignored)
 ├── mcp-configs/           # MCP server setup guides
 ├── templates/             # Reusable templates
 └── docs/                  # Extended documentation

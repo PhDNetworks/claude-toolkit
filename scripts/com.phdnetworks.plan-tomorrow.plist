@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Label: Unique identifier for this job -->
+    <key>Label</key>
+    <string>com.phdnetworks.plan-tomorrow</string>
+
+    <!-- Program: Full path to the script to execute -->
+    <key>Program</key>
+    <string>/Users/phdnetworks/bin/plan-tomorrow.sh</string>
+
+    <!-- StartCalendarInterval: Run daily at 20:00 (8 PM) -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>20</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- Working Directory -->
+    <key>WorkingDirectory</key>
+    <string>/Users/phdnetworks/Projects/claude-toolkit</string>
+
+    <!-- Environment Variables -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/phdnetworks/bin</string>
+        <key>HOME</key>
+        <string>/Users/phdnetworks</string>
+    </dict>
+
+    <!-- Standard Output Log -->
+    <key>StandardOutPath</key>
+    <string>/Users/phdnetworks/Projects/claude-toolkit/logs/launchd-stdout.log</string>
+
+    <!-- Standard Error Log -->
+    <key>StandardErrorPath</key>
+    <string>/Users/phdnetworks/Projects/claude-toolkit/logs/launchd-stderr.log</string>
+
+    <!-- Run at load (for testing - set to false for production) -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <!-- Nice: Lower priority (higher nice value = lower priority) -->
+    <key>Nice</key>
+    <integer>10</integer>
+
+    <!-- Process Type: Background task -->
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <!-- Timeout: Allow up to 30 minutes for execution -->
+    <key>TimeOut</key>
+    <integer>1800</integer>
+
+    <!-- Keep Alive: Don't restart if it exits -->
+    <key>KeepAlive</key>
+    <false/>
+</dict>
+</plist>

@@ -14,9 +14,13 @@ Commands for daily planning, session documentation, git workflows, and autonomou
 | Command | Purpose |
 |---------|---------|
 | `/today` | Daily planning from Asana + Google Calendar |
+| `/plan-tomorrow` | Automated tomorrow planning with calendar events + Notion workspaces |
 | `/doc-to-notion` | Document sessions to Notion |
 | `/ship` | Git commit with conventional format |
 | `/deepwork` | Autonomous deep work mode |
+
+## Automation
+- **Daily 20:00** - `/plan-tomorrow` runs via launchd (com.phdnetworks.plan-tomorrow)
 
 ## Quick Start
 ```bash
