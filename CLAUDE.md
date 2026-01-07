@@ -18,6 +18,7 @@ Commands for daily planning, session documentation, git workflows, and autonomou
 | `/doc-to-notion` | Document sessions to Notion |
 | `/ship` | Git commit with conventional format |
 | `/deepwork` | Autonomous deep work mode |
+| `/auto` | Autonomous task orchestrator (ultrathink + sub-agents) |
 
 ## Automation
 - **Daily 20:00** - `/plan-tomorrow` runs via launchd (com.phdnetworks.plan-tomorrow)

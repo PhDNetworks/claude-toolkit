@@ -31,6 +31,7 @@ claude
 | `/doc-to-notion` | Document Claude Code session to Notion |
 | `/ship` | Smart git commit with conventional format |
 | `/deepwork` | Activate autonomous deep work mode |
+| `/auto` | Autonomous task orchestrator with ultrathink + sub-agents |
 
 ### Shell Commands
 
@@ -40,6 +41,7 @@ claude
 | `deepwork "task"` | Run single task autonomously |
 | `plan-tomorrow` | Run tomorrow planning (creates calendar events) |
 | `claude-toolkit` | Navigate to toolkit directory |
+| `auto "task"` | Run autonomous task orchestrator |
 
 ### Automation
 
@@ -124,10 +126,12 @@ claude-toolkit/
 │   ├── plan-tomorrow.md   # Automated tomorrow planning
 │   ├── doc-to-notion.md
 │   ├── ship.md
-│   └── deepwork.md
+│   ├── deepwork.md
+│   └── auto.md            # Autonomous task orchestrator
 ├── scripts/               # Shell scripts
 │   ├── deepwork.sh
 │   ├── plan-tomorrow.sh   # Tomorrow planning wrapper
+│   ├── auto.sh            # Autonomous task orchestrator
 │   └── com.phdnetworks.plan-tomorrow.plist  # launchd automation
 ├── logs/                  # Automation logs (gitignored)
 ├── mcp-configs/           # MCP server setup guides
