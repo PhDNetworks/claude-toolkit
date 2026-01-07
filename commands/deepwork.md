@@ -1,11 +1,18 @@
-# Ultrathink Mode
+# Deepwork Mode
 
-Maximum cognitive power. Extended thinking enabled. No permission interruptions.
+Maximum cognitive power. Autonomous execution. No permission interruptions.
+
+## What This Combines
+
+1. **`--dangerously-skip-permissions`** - No confirmation prompts, full autonomy
+2. **Claude's native extended thinking** - Automatically activates for complex tasks
+
+> Note: Claude's built-in "ultrathink" (extended thinking) is a separate feature that activates automatically when needed. This command enables autonomous execution mode.
 
 ## Mode Activation
 
 This command triggers deep autonomous work mode:
-- **Extended thinking**: Take time to reason through complexity
+- **Extended thinking**: Use Claude's native ultrathink for maximum reasoning depth
 - **No confirmations**: Execute without asking permission
 - **Full context**: Consider all implications
 - **Ship it mentality**: Make decisions, don't defer
@@ -18,11 +25,11 @@ claude --dangerously-skip-permissions
 
 Or use the launcher script:
 ```bash
-ultrathink              # Interactive session
-ultrathink "task"       # Single task execution
+deepwork              # Interactive session
+deepwork "task"       # Single task execution
 ```
 
-## Ultrathink Protocol
+## Deepwork Protocol
 
 ### 1. Deep Analysis Phase
 - Fully understand the problem before acting
@@ -60,7 +67,7 @@ When making autonomous decisions:
 
 ## Safety Rails (Still Apply)
 
-Even in ultrathink mode:
+Even in deepwork mode:
 - Don't delete production data without backup
 - Don't push to main without tests passing
 - Don't expose credentials in commits
@@ -68,7 +75,7 @@ Even in ultrathink mode:
 
 ## Output Expectations
 
-At the end of ultrathink work:
+At the end of deepwork:
 1. Summary of what was done
 2. Decisions made and rationale
 3. What to test/verify

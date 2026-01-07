@@ -29,14 +29,14 @@ claude
 | `/today` | Generate daily plan from Asana tasks + Google Calendar |
 | `/doc-to-notion` | Document Claude Code session to Notion |
 | `/ship` | Smart git commit with conventional format |
-| `/ultrathink` | Activate autonomous deep work mode |
+| `/deepwork` | Activate autonomous deep work mode |
 
 ### Shell Commands
 
 | Command | Description |
 |---------|-------------|
-| `ultrathink` | Launch Claude in autonomous mode |
-| `ultrathink "task"` | Run single task autonomously |
+| `deepwork` | Launch Claude in autonomous mode |
+| `deepwork "task"` | Run single task autonomously |
 | `claude-toolkit` | Navigate to toolkit directory |
 
 ## Installation
@@ -55,7 +55,7 @@ claude
 
 This creates symlinks (not copies) so updates flow through automatically:
 - `~/.claude/commands/` → `commands/`
-- `~/bin/ultrathink.sh` → `scripts/ultrathink.sh`
+- `~/bin/deepwork.sh` → `scripts/deepwork.sh`
 
 ### Update
 
@@ -100,9 +100,9 @@ claude-toolkit/
 │   ├── today.md
 │   ├── doc-to-notion.md
 │   ├── ship.md
-│   └── ultrathink.md
+│   └── deepwork.md
 ├── scripts/               # Shell scripts
-│   └── ultrathink.sh
+│   └── deepwork.sh
 ├── mcp-configs/           # MCP server setup guides
 ├── templates/             # Reusable templates
 └── docs/                  # Extended documentation

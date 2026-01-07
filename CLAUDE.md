@@ -16,7 +16,7 @@ Commands for daily planning, session documentation, git workflows, and autonomou
 | `/today` | Daily planning from Asana + Google Calendar |
 | `/doc-to-notion` | Document sessions to Notion |
 | `/ship` | Git commit with conventional format |
-| `/ultrathink` | Autonomous deep work mode |
+| `/deepwork` | Autonomous deep work mode |
 
 ## Quick Start
 ```bash

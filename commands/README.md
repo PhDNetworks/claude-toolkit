@@ -9,7 +9,7 @@ Custom slash commands for Claude Code productivity.
 | `/today` | today.md | Daily planning from Asana + Google Calendar |
 | `/doc-to-notion` | doc-to-notion.md | Document sessions to Notion |
 | `/ship` | ship.md | Git commit with conventional format |
-| `/ultrathink` | ultrathink.md | Autonomous deep work mode |
+| `/deepwork` | deepwork.md | Autonomous deep work mode |
 
 ## Installation
 
@@ -22,7 +22,7 @@ In any Claude Code session:
 /today
 /doc-to-notion
 /ship --no-push
-/ultrathink "build the new feature"
+/deepwork "build the new feature"
 ```
 
 ## Creating New Commands
@@ -47,4 +47,4 @@ Commands may require MCP servers to be configured:
 - **today.md**: Asana MCP, Google Calendar MCP
 - **doc-to-notion.md**: Notion MCP
 - **ship.md**: Git (no MCP needed)
-- **ultrathink.md**: No dependencies
+- **deepwork.md**: No dependencies
