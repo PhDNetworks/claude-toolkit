@@ -1,0 +1,31 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Sensitive
+.env
+.env.local
+*.pem
+*.key
+
+# Backup files
+*.bak
+*.backup
+
+# Node (if ever needed)
+node_modules/
+
+# Python (if ever needed)
+__pycache__/
+*.pyc
+.venv/
