@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "asana": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@roychri/mcp-server-asana"],
+      "env": {
+        "ASANA_ACCESS_TOKEN": "YOUR_ASANA_PAT"
+      }
+    },
+    "google-calendar": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@cocal/google-calendar-mcp"],
+      "env": {
+        "GOOGLE_OAUTH_CREDENTIALS": "~/.config/google-calendar-mcp/client_secret.json"
+      }
+    },
+    "notion": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.notion.com/mcp"],
+      "env": {}
+    },
+    "make": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://YOUR_REGION.make.com/mcp/u/YOUR_ORG_ID/sse"],
+      "env": {}
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"],
+      "env": {}
+    }
+  }
+}

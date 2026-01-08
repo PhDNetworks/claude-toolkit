@@ -106,6 +106,21 @@ For full functionality, configure these MCP servers:
 | Google Calendar | `/today` | [mcp-configs/google-calendar.md](mcp-configs/google-calendar.md) |
 | Asana | `/today` | [mcp-configs/README.md](mcp-configs/README.md) |
 
+### Multi-Machine Setup
+
+Copy-paste MCP config templates for Mac, WSL, or Windows:
+
+```
+mcp-templates/
+├── mac-mcp-config.json      # macOS template
+├── wsl-mcp-config.json      # WSL/Linux template
+├── windows-mcp-config.json  # Windows template
+├── secrets.example.env      # Secrets reference
+└── README.md                # Setup instructions
+```
+
+See [mcp-templates/README.md](mcp-templates/README.md) for full setup instructions.
+
 ### Quick Asana Setup
 
 ```bash
@@ -135,6 +150,7 @@ claude-toolkit/
 │   └── com.phdnetworks.plan-tomorrow.plist  # launchd automation
 ├── logs/                  # Automation logs (gitignored)
 ├── mcp-configs/           # MCP server setup guides
+├── mcp-templates/         # Cross-platform MCP config templates
 ├── templates/             # Reusable templates
 └── docs/                  # Extended documentation
     ├── setup.md
