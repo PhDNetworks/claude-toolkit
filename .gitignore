@@ -30,3 +30,4 @@ node_modules/
 __pycache__/
 *.pyc
 .venv/
+client_secret*.json
