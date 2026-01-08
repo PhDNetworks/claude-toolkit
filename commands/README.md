@@ -7,9 +7,20 @@ Custom slash commands for Claude Code productivity.
 | Command | File | Description |
 |---------|------|-------------|
 | `/today` | today.md | Daily planning from Asana + Google Calendar |
-| `/doc-to-notion` | doc-to-notion.md | Document sessions to Notion |
+| `/plan-tomorrow` | plan-tomorrow.md | Auto-schedule tomorrow with calendar events + Notion |
+| `/doc-to-notion` | doc-to-notion.md | Document sessions to Notion (auto-detects source machine) |
 | `/ship` | ship.md | Git commit with conventional format |
 | `/deepwork` | deepwork.md | Autonomous deep work mode |
+| `/auto` | auto.md | Autonomous task orchestrator with ultrathink |
+
+## Features
+
+### Machine Detection (`/doc-to-notion`)
+
+Automatically detects whether you're on MacBook Pro or Windows Workhorse (WSL) and tags Notion documentation accordingly:
+- 🍎 MacBook Pro
+- 🪟 Windows Workhorse (WSL)
+- 💻 Unknown hostname
 
 ## Installation
 
@@ -20,9 +31,11 @@ These commands are installed via the main `install.sh` script which creates syml
 In any Claude Code session:
 ```
 /today
+/plan-tomorrow
 /doc-to-notion
 /ship --no-push
 /deepwork "build the new feature"
+/auto "complete the API integration"
 ```
 
 ## Creating New Commands
@@ -45,6 +58,8 @@ Each command file should include:
 
 Commands may require MCP servers to be configured:
 - **today.md**: Asana MCP, Google Calendar MCP
+- **plan-tomorrow.md**: Asana MCP, Google Calendar MCP, Notion MCP
 - **doc-to-notion.md**: Notion MCP
 - **ship.md**: Git (no MCP needed)
 - **deepwork.md**: No dependencies
+- **auto.md**: No dependencies (uses ultrathink mode)

@@ -2,6 +2,31 @@
 
 Document the current Claude Code session to Danny's Notion workspace for future reference and project tracking.
 
+## Machine Detection
+
+First, detect the source machine to tag the documentation appropriately:
+
+```bash
+# Get hostname and determine machine type
+HOSTNAME=$(hostname)
+case "$HOSTNAME" in
+  *MacBook*|*macbook*|*MBP*|PhD-Mac*|*phdnetworks*)
+    MACHINE_EMOJI="🍎"
+    MACHINE_NAME="MacBook Pro"
+    ;;
+  *PhD-Laptop*|*DESKTOP*|*laptop*|*WSL*)
+    MACHINE_EMOJI="🪟"
+    MACHINE_NAME="Windows Workhorse (WSL)"
+    ;;
+  *)
+    MACHINE_EMOJI="💻"
+    MACHINE_NAME="$HOSTNAME"
+    ;;
+esac
+```
+
+Run this detection and use the results throughout the documentation.
+
 ## What to Extract
 
 Analyse the current session and extract:
@@ -31,11 +56,19 @@ Analyse the current session and extract:
 
 Create a Notion page with this structure:
 
-```markdown
-# Session: [DATE] - [PROJECT/CLIENT NAME]
+**Title format:** `📅 Session: [DATE] — [BRIEF_DESCRIPTION] [MACHINE_EMOJI]`
 
+**Properties/Metadata:**
+- Tags: `automation`, `session-log`, relevant tech tags
+- Source Machine: [MACHINE_NAME]
+- Hostname: [HOSTNAME]
+
+**Content:**
+
+```markdown
 ## Summary
 [2-3 sentence overview of what was accomplished]
+Source: [MACHINE_EMOJI] [MACHINE_NAME]
 
 ## Work Log
 | Time | Action | Outcome |
@@ -58,6 +91,10 @@ Create a Notion page with this structure:
 ## Related
 - Links to relevant docs/resources used
 - Related Notion pages
+
+---
+Documented via /doc-to-notion 🤖
+Source: [MACHINE_EMOJI] [MACHINE_NAME] ([HOSTNAME])
 ```
 
 ## Auto-Tagging
@@ -67,9 +104,19 @@ Tag entries with:
 - **Project type**: `google-ads`, `wordpress`, `seo`, `hosting`, `automation`, `membership`
 - **Status**: `in-progress`, `completed`, `blocked`
 - **Priority**: `high`, `medium`, `low`
+- **Source**: `macbook`, `windows-wsl`
 
 ## Notion Location
 
-Add to the Knowledge Base under PhD Networks Command Centre, or create in the appropriate client workspace if client-specific.
+Save to: **PhD Networks Command Centre > Knowledge Base > Session Logs**
+(Or appropriate client/project subfolder if session is project-specific)
+
+## Instructions
+
+1. Run the machine detection bash command first
+2. Review the current terminal session, git history, and any files modified
+3. Extract the key information and create a comprehensive but concise session document
+4. Include the machine source prominently so it's clear where the work was done
+5. Add the footer with source machine details
 
 $ARGUMENTS
