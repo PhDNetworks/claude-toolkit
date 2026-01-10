@@ -13,31 +13,124 @@ on:
         required: false
         default: true
         type: boolean
+      auto_create:
+        description: 'Auto-create missing files and commit to PR'
+        required: false
+        default: true
+        type: boolean
 
 jobs:
   check-docs:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          token: ${{ github.token }}
 
-      - name: Check for CLAUDE.md
+      - name: Check and create CLAUDE.md
         if: inputs.require_claude_md
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
+          REPO_DESC: ${{ github.event.repository.description }}
         run: |
           if [ ! -f "CLAUDE.md" ]; then
-            echo "::error::CLAUDE.md is missing. Please add a CLAUDE.md file to document this project for Claude Code."
-            exit 1
-          fi
-          echo "✅ CLAUDE.md found"
+            if [ "${{ inputs.auto_create }}" == "true" ] && [ "${{ github.event_name }}" == "pull_request" ]; then
+              cat > CLAUDE.md << 'EOF'
+          # $REPO_NAME
 
-      - name: Check for CHANGELOG.md
+          ## Overview
+          $REPO_DESC
+
+          ## Tech Stack
+          - List technologies used
+
+          ## Project Structure
+          Key directories and their purposes.
+
+          ## Development Commands
+          Common commands for development.
+
+          ## Key Patterns
+          Important patterns or conventions used.
+
+          ## Current Status
+          Active development status and priorities.
+          EOF
+              # Replace placeholders with actual values
+              sed -i "s/\$REPO_NAME/${REPO_NAME}/g" CLAUDE.md
+              sed -i "s/\$REPO_DESC/${REPO_DESC:-Brief description of the project purpose and scope.}/g" CLAUDE.md
+              # Remove leading whitespace from heredoc
+              sed -i 's/^          //' CLAUDE.md
+              echo "📝 Created CLAUDE.md template"
+              echo "CLAUDE_CREATED=true" >> $GITHUB_ENV
+            else
+              echo "::error::CLAUDE.md is missing. Please add a CLAUDE.md file to document this project for Claude Code."
+              echo "DOCS_FAILED=true" >> $GITHUB_ENV
+            fi
+          else
+            echo "✅ CLAUDE.md found"
+          fi
+
+      - name: Check and create CHANGELOG.md
         if: inputs.require_changelog
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
         run: |
           if [ ! -f "CHANGELOG.md" ]; then
-            echo "::error::CHANGELOG.md is missing. Please add a CHANGELOG.md file following Keep a Changelog format."
-            exit 1
+            if [ "${{ inputs.auto_create }}" == "true" ] && [ "${{ github.event_name }}" == "pull_request" ]; then
+              DATE=$(date +%Y-%m-%d)
+              cat > CHANGELOG.md << EOF
+          # Changelog
+
+          All notable changes to this project will be documented in this file.
+
+          The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+          and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+          ## [Unreleased]
+
+          ## [0.1.0] - ${DATE}
+
+          ### Added
+          - Initial release
+          EOF
+              # Remove leading whitespace from heredoc
+              sed -i 's/^          //' CHANGELOG.md
+              echo "📝 Created CHANGELOG.md template"
+              echo "CHANGELOG_CREATED=true" >> $GITHUB_ENV
+            else
+              echo "::error::CHANGELOG.md is missing. Please add a CHANGELOG.md file following Keep a Changelog format."
+              echo "DOCS_FAILED=true" >> $GITHUB_ENV
+            fi
+          else
+            echo "✅ CHANGELOG.md found"
           fi
-          echo "✅ CHANGELOG.md found"
+
+      - name: Commit auto-generated files
+        if: env.CLAUDE_CREATED == 'true' || env.CHANGELOG_CREATED == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add CLAUDE.md CHANGELOG.md 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "docs: auto-generate missing documentation files
+
+          This commit was automatically created by the documentation check workflow.
+          Please review and customize these template files for your project."
+            git push
+            echo "✅ Auto-generated documentation files committed to PR"
+          fi
+
+      - name: Fail if docs missing and auto-create disabled
+        if: env.DOCS_FAILED == 'true'
+        run: |
+          echo "::error::Required documentation files are missing and auto-create is disabled."
+          exit 1
 
       - name: Documentation check passed
+        if: env.DOCS_FAILED != 'true'
         run: echo "✅ All required documentation files are present"
