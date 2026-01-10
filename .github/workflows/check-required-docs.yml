@@ -1,0 +1,43 @@
+name: Check Required Documentation
+
+on:
+  workflow_call:
+    inputs:
+      require_claude_md:
+        description: 'Require CLAUDE.md file'
+        required: false
+        default: true
+        type: boolean
+      require_changelog:
+        description: 'Require CHANGELOG.md file'
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check for CLAUDE.md
+        if: inputs.require_claude_md
+        run: |
+          if [ ! -f "CLAUDE.md" ]; then
+            echo "::error::CLAUDE.md is missing. Please add a CLAUDE.md file to document this project for Claude Code."
+            exit 1
+          fi
+          echo "✅ CLAUDE.md found"
+
+      - name: Check for CHANGELOG.md
+        if: inputs.require_changelog
+        run: |
+          if [ ! -f "CHANGELOG.md" ]; then
+            echo "::error::CHANGELOG.md is missing. Please add a CHANGELOG.md file following Keep a Changelog format."
+            exit 1
+          fi
+          echo "✅ CHANGELOG.md found"
+
+      - name: Documentation check passed
+        run: echo "✅ All required documentation files are present"

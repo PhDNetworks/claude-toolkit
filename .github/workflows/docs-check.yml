@@ -1,0 +1,11 @@
+name: Documentation Check
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+jobs:
+  check-docs:
+    uses: PhDNetworks/claude-toolkit/.github/workflows/check-required-docs.yml@main
