@@ -41,10 +41,24 @@ Commands for daily planning, session documentation, git workflows, and autonomou
 - Clients: JP Electrical, JLR Smith Roofing, Ossett Dental, Wortley Windows, Rodley Carpets
 - MCP Servers: Notion (OAuth), Google Calendar (OAuth), Asana (Token), Playwright
 
+## Skill Usage Rules
+
+### Frontend Design (MANDATORY)
+**Always invoke the `frontend-design` skill when:**
+- Building landing pages, websites, or web applications
+- Creating HTML/CSS/JS interfaces
+- Designing UI components or page layouts
+- Working on any client-facing web deliverables
+
+**How to invoke:** Use the Skill tool with `skill: "frontend-design:frontend-design"` BEFORE generating frontend code.
+
+**Why:** Ensures distinctive, production-grade output that avoids generic AI aesthetics. Extracts brand identity, creates cohesive design systems, and delivers polished, conversion-focused interfaces.
+
 ## Key Learnings
 - Notion MCP: Use OAuth method from https://developers.notion.com/docs/mcp (not API key env var)
 - Google Calendar MCP: Requires OAuth credential JSON file setup
 - Always test MCP with simple query (`claude -p "list calendars"`) before debugging config
+- Frontend work: Always invoke frontend-design skill first for high-quality, distinctive output
 
 ## Adding New Commands
 1. Create `commands/new-command.md` with `$ARGUMENTS` placeholder at end

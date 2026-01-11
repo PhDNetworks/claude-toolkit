@@ -42,12 +42,17 @@ Analyse the current session and extract:
 - Architecture decisions
 - Client-related decisions
 
-### 3. Learnings
+### 3. Skills & Plugins Used
+- Which Claude Code skills were invoked (e.g., `frontend-design`, `context7`)
+- Note if a skill SHOULD have been used but wasn't
+- MCP tools utilised (Notion, Asana, Calendar, Playwright, Make.com)
+
+### 4. Learnings
 - New techniques discovered
 - Gotchas encountered
 - Reusable patterns identified
 
-### 4. Next Steps
+### 5. Next Steps
 - Outstanding work
 - Follow-up tasks (create as Asana tasks if actionable)
 - Dependencies or blockers
@@ -78,6 +83,14 @@ Source: [MACHINE_EMOJI] [MACHINE_NAME]
 ## Code Changes
 - `filename.ext` - [what changed and why]
 
+## Skills & Plugins Used
+| Skill/Plugin | Used? | Notes |
+|--------------|-------|-------|
+| frontend-design | ✅/❌ | [context if used] |
+| context7 | ✅/❌ | [docs fetched] |
+
+**MCP Tools:** [List MCP servers used: Notion, Asana, Calendar, Playwright, Make.com]
+
 ## Technical Notes
 [Important technical details for future reference]
 
@@ -100,8 +113,9 @@ Source: [MACHINE_EMOJI] [MACHINE_NAME] ([HOSTNAME])
 ## Auto-Tagging
 
 Tag entries with:
-- **Client**: JP Electrical, JLR Smith Roofing, Ossett Dental, Wortley Windows, Rodley Carpets, DOAB
-- **Project type**: `google-ads`, `wordpress`, `seo`, `hosting`, `automation`, `membership`
+- **Client**: JP Electrical, JLR Smith Roofing, Ossett Dental, Wortley Windows, Rodley Carpets, BRO Electrical, DOAB, TaxiShare, Nikki Verity
+- **Project type**: `google-ads`, `wordpress`, `seo`, `hosting`, `automation`, `membership`, `frontend`, `landing-page`, `proposal`
+- **Skills used**: `frontend-design`, `context7`, `none`
 - **Status**: `in-progress`, `completed`, `blocked`
 - **Priority**: `high`, `medium`, `low`
 - **Source**: `macbook`, `windows-wsl`
@@ -116,7 +130,8 @@ Save to: **PhD Networks Command Centre > Knowledge Base > Session Logs**
 1. Run the machine detection bash command first
 2. Review the current terminal session, git history, and any files modified
 3. Extract the key information and create a comprehensive but concise session document
-4. Include the machine source prominently so it's clear where the work was done
-5. Add the footer with source machine details
+4. **Check skill usage:** If frontend work was done, verify `frontend-design` skill was invoked. Flag if it wasn't.
+5. Include the machine source prominently so it's clear where the work was done
+6. Add the footer with source machine details
 
 $ARGUMENTS
